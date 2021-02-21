@@ -97,7 +97,7 @@ let step = () => {
     html.innerHTML = str2
     style.innerHTML = str.substring(0, n)
     if (++n < str.length) step()
-  }, 5)
+  }, 50)
 }
 
 
