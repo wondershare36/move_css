@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>会动的css</title>
+  <style id="style"></style>
+</head>
+
+<body>
+  <div id="html"></div>
+  <div id="divWrapper">
+    <div id="div1"></div>
+  </div>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    *::before {
+      box-sizing: border-box;
+    }
+
+    *::after {
+      box-sizing: border-box;
+    }
+
+    #html {
+      word-break: break-all;
+    }
+
+    #divWrapper {
+      width: 50vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #div1 {
+      position: fixed;
+      right: 20px;
+      top: 10px;
+    }
+
+    #div1::before {
+      content: '';
+      display: block;
+    }
+
+    #div1::after {
+      content: '';
+      display: block;
+    }
+
+    @media screen and (max-width:800px) {
+      #html {
+        height: 50vh;
+        overflow: hidden;
+      }
+
+      #div1 {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      #divWrapper {
+        height: 50vh;
+        content: "";
+
+      }
+    }
+  </style>
+  <script src="main.js"></script>
+</body>
+
+</html>
