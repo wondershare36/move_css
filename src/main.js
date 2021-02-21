@@ -24,7 +24,7 @@ html {
 /* 代码高亮 */
 .token.selector{ color: rgb(252,123,123); }
 .token.property{ color: rgb(122,162,247); }
-.token.punctuation{ color: #89DDFF; }
+.token.punctuation{ color: rgb(154, 189, 245); }
 .token.function{ color: rgb(42,161,152); }
 
  /**
