@@ -11,7 +11,7 @@ let str = `
 }
 /* 白色背景太单调了，我们来点背景 */
 html {
-  color: rgb(222,222,222); background: rgb(0,43,54);
+  color: rgb(222,222,222); background: rgb(36,40,59);
 }
 /* 文字离边框太近了 */
 #html {
@@ -22,9 +22,9 @@ html {
   width: 45vw; height: 90vh;
 }
 /* 代码高亮 */
-.token.selector{ color: rgb(133,153,0); }
-.token.property{ color: rgb(187,137,0); }
-.token.punctuation{ color: yellow; }
+.token.selector{ color: rgb(252,123,123); }
+.token.property{ color: rgb(122,162,247); }
+.token.punctuation{ color: #89DDFF; }
 .token.function{ color: rgb(42,161,152); }
 
  /**
@@ -82,14 +82,26 @@ let n = 0
 
 let step = () => {
   setTimeout(() => {
-    // 遇见换行补<br>
-    if (str[n] === "\n") {
+    if (str[n] === "\n") {// 换行
       str2 += "<br>"
-    } else if (str[n] === " ") {
+    } else if (str[n] === " ") {// 空格
       str2 += "&nbsp;"
-    }else if(str[n]=="{"||str[n]=="}"){
-      str2+=`<span class="token punctuation">${str[n]}</span>`
-    } else {
+    }
+    else if(str[n]=="#"){//ID选择器
+      str2+=`<span class="token selector">${str[n]}`
+    }else if(str[n]=="{"){//左花括号
+      str2+=`</span><span class="token punctuation">{</span>
+      <span class="token property">
+      `
+    }else if(str[n]==":"&&str[n-1]!=":"&&str[n+1]!=":"){//冒号 判断属性，且不是双冒号::
+      str2+=`</span>:`
+    }else if(str[n]==";"&&str[n+2]!=="}"){//分号 且后面不是回车花括号
+      str2+=`</span><span class="token punctuation">${str[n]}</span>
+      <span class="token property">
+      `
+    }else if(str[n]=="}"){//右花括号
+      str2+=`<span class="token punctuation">}</span>`
+    }else {
       str2 += str[n]
     }
     window.scrollTo(0, 99999)
@@ -97,7 +109,7 @@ let step = () => {
     html.innerHTML = str2
     style.innerHTML = str.substring(0, n)
     if (++n < str.length) step()
-  }, 50)
+  }, 2)
 }
 
 
